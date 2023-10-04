@@ -1,5 +1,6 @@
 ---
 layout: default
+title: OpenOutcomes
 ---
   <header class="masthead text-center text-white d-flex" style="background-image:url(../img/home-bg.png);background-position:center center;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover">
       <div class="container my-auto" >
@@ -31,7 +32,7 @@ layout: default
             <hr class="my-4">
 
                         <p class="mb-0">
-                          openOutcomes is an innovative digital platform for clinicians and patients to help with patient engagement using patient reported outcomes measures (PROMs/PROs) and patient reported experience measures (PREMs). It is a highly interoperable platform to collect, record and analyse patient outcomes. It has been co-designed by clinicians to help deliver data driven patient care</p>
+                          openOutcomes is an innovative digital platform for clinicians and patients to help with patient engagement using patient reported outcomes measures (PROMs/PROs) and patient reported experience measures (PREMs). It is a highly interoperable platform to collect, record and analyse patient outcomes. It has been co-designed by clinicians to help deliver data driven patient care.</p>
 <br>
 <p>The platform has been designed to be “pathway agnostic” and cover PROMs in any specialty, as well as Patient Reported Experience Measures (PREMs). Common MSK and Orthopaedic outcomes have long been championed and questionnaires have now been written as openEHR archetypes ready to be incorporated into the platform should Trusts require it. These include:</p>
 
@@ -56,6 +57,8 @@ layout: default
     <li>The software has automatic prompts when post-operative responses are due and prompts when questionnaires have not been received. </li>
 </ul>
 
+<p>OpenOutcomes is a digital platform capable of building on modules for other speciality PROMs such as ophthalmology, general surgery and cancer services. The technology upon which its built allows for any PROMs questionnaire to be incorporated into the platform due its agnostic capabilities.</p>
+
 <p>While openOutcomes™ can be downloaded and used free of charge anywhere in the world, we recommend that installations in a clinical environment are handled through our authorised professional services network. One of our professional services partners <a href="mailto:nfo@staircase13.com">Staircase 13</a>, can provide advice and pricing on accredited implementation and support services.  
 
 <p>Our partners will ensure that your clinical data integrates with hospital workflows and PAS systems are robust. </p>
@@ -70,7 +73,7 @@ layout: default
 <!-- /END WHAT IS SECTION -->
 
 <!-- BEGIN GOVERNANCE SECTION -->
-  <section id="governance" style="background-image:url(../img/home-bg2.jpg);background-position:center center;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover">
+  <section id="governance">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-justify">
@@ -261,29 +264,46 @@ layout: default
             <hr class="my-4">
             <p class="text-justify text-white">The Apperta openOutcomes™ Committee comprises clinicians, informaticians and IT experts who combine in-depth knowledge of clinical ophthalmology with a deep and detailed understanding of software who oversee openOutcomes™ development.</p>
 
-{% assign rows = site.members.size | divided_by: 3.0 | ceil %}
-{% for i in (1..rows) %}
-
-  <div class="row" style="margin-top: 20px">
-
-  {% assign offset = forloop.index0 | times: 3 %}
-  {% for member in site.members limit:3 offset:offset %}
- 
-
-          <div class="col-sm-4">
-            <div class="card" style="height: 100%;">
-             <div class="card-header"><strong>{{ member.name }}</strong> <p><em>{{ member.title }}</em> </p></div>
-            <div class="card-body">
-            <img src="{{ member.photo }}" style="margin:10px" alt="Card image cap">
-            </div>
-          </div>
-        </div>
-
-  {% endfor %}
-
-</div>
-
-{% endfor %}
+            {% assign members = site.members | where:"subcommittee",page.title %}
+                {% assign rows = members.size | divided_by: 3.0 | ceil %}
+                {% for i in (1..rows) %}
+                <div class="row">
+                    {% assign offset = forloop.index0 | times: 3 %}
+                     {% assign sorted = site.members | where:"subcommittee",page.title  | sort:"position" %}
+                       {% for member in sorted limit:3 offset:offset%} 
+                        {% if member.subcommittee == page.title %}
+                            <div class="col-sm-4">
+                                <div class="card" style="height: 100%;">
+                                    <div class="card-header"><strong>{{ member.name }}</strong> <p><em>{{ member.role }}</em> </p>
+                                    </div>
+                                    <div class="card-body">
+                                      <img src="{{ member.photo }}" style="margin:10px" alt="Card image cap">
+                                            <div class="row">
+                                                <div class="col-md-12 col-xs-12  col-centered">                        {% if member.twitter == null %}
+                                                    {% else %}
+                                                    <a href="http://twitter.com/{{ member.twitter }}" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+                                                {% endif %}
+                                                {% if member.www == null %}
+                                                    {% else %}
+                                                    <a href="{{ member.www }}" target="_blank"><i class="fas fa-globe fa-2x"></i></a>
+                                                {% endif %}
+                                                {% if member.linkedin == null %}
+                                                    {% else %}
+                                                    <a href="{{ member.linkedin }}" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                                                {% endif %}
+                                                {% if member.github == null %}
+                                                    {% else %}
+                                                    <a href="{{ member.github }}" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+                                                {% endif %}
+                                                </div>
+                                            </div>                                         
+                                    </div>
+                                </div>
+                            </div>
+                         {% endif %}
+                    {% endfor %}
+                 </div><br>
+                {% endfor %}
             
 
               </div>
