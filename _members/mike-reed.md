@@ -1,5 +1,5 @@
 ---
-name: Professor Mike Reed
+name: Professor Mike Reed, Consultant Orthopaedic Surgeon and Clinical Director, Trauma and Orthopaedics, Northumbria Healthcare.
 subcommittee: OpenOutcomes
 photo: '/img/MikeReed.png'
 role: Chair
