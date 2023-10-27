@@ -1,5 +1,5 @@
 ---
-name: Andrew Bateman
+name: Professor Andrew Bateman, School of Health and Social Care at University of Essex; Director, NIHR East of England Research Design Service
 subcommittee: OpenOutcomes
 photo: '/img/andrew-bateman.png'
 role: Member

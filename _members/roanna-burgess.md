@@ -1,5 +1,5 @@
 ---
-name: Roanna Burgess, Consultant Physiotherapist/Musculoskeletal Lead
+name: Roanna Burgess, Consultant Physiotherapist/Musculoskeletal Lead at Sandwell and West Birmingham NHS Trust
 subcommittee: OpenOutcomes
 photo: '/img/roanna-burgess.png'
 role: Member
